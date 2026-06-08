@@ -121,12 +121,18 @@
     <div class="qty-row">
       <div class="qty-block">
         <div class="qty-block-label">Current Stock</div>
-        <div class="qty-num" id="qty-display">—</div>
+        <div class="qty-with-unit" style="display:flex;align-items:baseline;justify-content:center;gap:6px;">
+  <div class="qty-num" id="qty-display">—</div>
+  <div id="qty-unit-display" style="font-size:14px;font-weight:600;opacity:0.75;"></div>
+</div>
       </div>
       <div class="qty-divider">/</div>
       <div class="qty-block">
         <div class="qty-block-label">PAR Level</div>
-        <div class="qty-num par" id="par-display">—</div>
+        <div class="qty-with-unit" style="display:flex;align-items:baseline;justify-content:center;gap:6px;">
+  <div class="qty-num par" id="par-display">—</div>
+  <div id="par-unit-display" style="font-size:13px;font-weight:600;color:#5f5e5a;opacity:0.75;"></div>
+</div>
       </div>
     </div>
     <div class="status-bar"><div class="status-fill" id="status-fill" style="width:0%"></div></div>
@@ -243,6 +249,8 @@
     document.getElementById("pill-location").textContent     = "📍 " + (item.shelfLocation || "No location set");
     document.getElementById("pill-unit").textContent         = (item.unit || "unit") + "(s)";
     document.getElementById("qty-display").textContent       = originalQty;
+    document.getElementById("qty-unit-display").textContent = item.unit || "";
+    document.getElementById("par-unit-display").textContent = item.unit ||""; 
     document.getElementById("par-display").textContent       = item.par || "—";
     document.getElementById("qty-input").value               = originalQty;
     const exp     = formatExpiry(item.expirationDate);
